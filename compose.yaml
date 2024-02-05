@@ -1,0 +1,45 @@
+services:
+  proxy:
+    build: proxy
+    volumes:
+      - contacts-dist:/contacts-dist
+    networks:
+      proxynet:
+        ipv4_address: 10.5.0.5
+      contacts-backend:
+
+  db:
+    image: mariadb:10.11-jammy
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    healthcheck:
+      test: ['CMD-SHELL', 'mysqladmin ping -h 127.0.0.1 --password="$$(echo $MARIADB_ROOT_PASSWORD)" --silent']
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - db-data:/var/lib/mysql
+    ports:
+      - 3307:3306
+    networks:
+      - mydb
+    env_file:
+      - .env
+
+volumes:
+  db-data:
+    name: db-data
+  contacts-dist:
+    name: contacts-dist
+
+networks:
+  proxynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
+  contacts-backend:
+    name: contacts-backend
+  mydb:
+    name: mydb

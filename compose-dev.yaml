@@ -1,0 +1,11 @@
+services:
+  proxy:
+    build: proxy
+    ports:
+      - 80:80
+
+  db:
+    ports:
+      - 3307:3306
+    env_file:
+      - .env.dev
