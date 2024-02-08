@@ -85,8 +85,8 @@ Ubuntu VM
 				volume-appA - build and copy dist
 		appB
 			api
-				network-appA - expose api on docker network
-				network-dbB - db connection
+				network-appB - expose api on docker network
+				network-db - db connection
 			frontend
 				volume-appB - build and copy dist
 ```
