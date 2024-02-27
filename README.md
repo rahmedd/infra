@@ -1,4 +1,4 @@
-#### Hosting multiple Docker compose applications on a Ubuntu server.
+Hosting multiple Docker compose applications on a Ubuntu server.
 
 ## Q&A:
 Why not use a container orchestrator:
@@ -34,7 +34,7 @@ Why not use Heroku or Dokku (self-hosted):
 Set ```.env.dev``` vars
 
 ### Run compose
-```
+```shell
 $ docker compose -f compose.yaml -f compose-dev.yaml up
 ```
 
@@ -57,7 +57,7 @@ Copy ```remote.nginx.conf``` to ```/etc/nginx/nginx.conf```
 Set production ```.env``` vars
 
 ### Use docker contexts to deploy:
-```
+```shell
 $ docker context create --docker "host=ssh://deployer@mydomain.test" prod
 $ docker context use prod
 $ docker compose up --build
