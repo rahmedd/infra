@@ -3,6 +3,7 @@ services:
     build: proxy
     volumes:
       - contacts-dist:/contacts-dist
+      - blog-dist:/blog-dist
     networks:
       proxynet:
         ipv4_address: 10.5.0.5
@@ -31,6 +32,8 @@ volumes:
     name: db-data
   contacts-dist:
     name: contacts-dist
+  blog-dist:
+    name: blog-dist
 
 networks:
   proxynet:

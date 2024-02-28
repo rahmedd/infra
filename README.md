@@ -1,6 +1,6 @@
 Hosting multiple Docker compose applications on a Ubuntu server.
 
-## Q&A:
+## FAQ
 Why not use a container orchestrator:
 - Most container orchestrators are too complex and too heavy to run on a cheap underpowered server.
 
