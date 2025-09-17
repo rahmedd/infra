@@ -1,6 +1,7 @@
 services:
   proxy:
     build: proxy
+    restart: always
     volumes:
       - contacts-dist:/contacts-dist
       - blog-dist:/blog-dist
